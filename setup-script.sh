@@ -57,7 +57,7 @@ service:
 		container_name: pgadmin
 		environment:
 			PGADMIN_DEFAULT_EMAIL: admin@admin.com
-			PGADMIN_DAFEULT_PASSWORD: admin
+			PGADMIN_DEFAULT_PASSWORD: admin
 		ports:
 			- "127.0.0.1:9100:80"
 		depends_on:
