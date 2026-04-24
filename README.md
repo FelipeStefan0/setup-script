@@ -23,10 +23,14 @@ Follow these steps:
 ```bash
 git clone [https://github.com/FelipeStefan0/setup-script.git](https://github.com/FelipeStefan0/setup-script.git)
 cd setup-script
+````
 
 ### 2. Set permission in the file
 ```bash
 chmod +x setup-script.sh
+````
 
 ### 3. Update the terminal
+```bash
 source ~/.bashrc
+```
