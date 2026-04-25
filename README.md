@@ -30,9 +30,20 @@ cd setup-script
 chmod +x setup-script.sh
 ````
 
-### 3. Update the terminal
+### 3. Execute script
+```bash
+./setup-script.sh
+```
+
+### 4. Update the terminal
 ```bash
 source ~/.bashrc
+```
+
+### 5. Verify versions
+```bash
+java -version
+ng version
 ```
 
 
