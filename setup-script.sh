@@ -38,40 +38,39 @@ mkdir -p ~/dev/projects
 # 5. Creating docker-compose.yml default
 echo "🐋 Creating docker-compose.yml file to setup PostgreSQL..."
 cat <<EOF > ~/dev/infra/docker-compose.yml
-service:
-	postgres-db:
-		image: postgres:18-alpine
-		container_name: postgres-db
-		environment:
-			POSTGRES_USER: postgres
-			POSTGRES_PASSWORD: postgres
-		ports:
-			- "127.0.0.1:5432:5432"
-		volumes:
-			- pgdata:/var/lib/postgres
-		networks:
-			- pg-network
+services:
+  postgres-db:
+    image: postgres:18-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - pg-network
 
-	pgadmin:
-		image: dpage/pgadmin4
-		container_name: pgadmin
-		environment:
-			PGADMIN_DEFAULT_EMAIL: admin@admin.com
-			PGADMIN_DEFAULT_PASSWORD: admin
-		ports:
-			- "127.0.0.1:9100:80"
-		depends_on:
-			- postgres-db
-		networks:
-			- pg-network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "127.0.0.1:9100:80"
+    depends_on:
+      - postgres-db
+    networks:
+      - pg-network
 
+networks:
+  pg-network:
+    driver: bridge
 
-	netwroks:
-		pg-network:
-			drive: bridge
-
-	volumes:
-		pgdata:
+volumes:
+  pgdata:
 EOF
 
 echo "✅ Development Environment configured with success!"
